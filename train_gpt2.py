@@ -182,7 +182,7 @@ max_length = 30
 
 model = GPT.from_pretrained('gpt2')
 model.eval()
-model.to('cuda')
+model.to('cpu')
 
 import tiktoken
 import numpy as np
@@ -191,7 +191,7 @@ enc = tiktoken.get_encoding('gpt2')
 tokens = enc.encode("Hello, I'm a language model.")
 tokens = torch.tensor(tokens, dtype = torch.long)
 tokens = tokens.unsqueeze(0).repeat(num_return_sequences, 1)
-x = tokens.to('cuda')
+x = tokens.to('cpu')
 
 # generate! right now x is (B, T) where B = 5, T = 8
 # set the seed to 42
@@ -202,7 +202,7 @@ while x.size(1) < max_length:
     # forward the model to get the logits
     with torch.no_grad():
         
-        logits, loss = model(xgen) # (B, T, vocab_size)
+        logits, loss = model(x) # (B, T, vocab_size)
         # take the logits at the last position
         logits = logits[:, -1, :] # (B, vocab_size)
         # get the probabilities
@@ -216,7 +216,7 @@ while x.size(1) < max_length:
         # gather the corresponding indices
         xcol = torch.gather(topk_indices, -1, ix) # (B, 1)
         # append to the sequence
-        xgen = torch.cat((xgen, xcol), dim=1)
+        xgen = torch.cat((x, xcol), dim=1)
 
 # print the generated text
 for i in range(num_return_sequences):
