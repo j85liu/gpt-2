@@ -193,6 +193,11 @@ model = GPT(GPTConfig())
 model.eval()
 model.to(device)
 
+# get logits
+optimizer = torch.optim.AdamW(model.parameters(), lr = 3e-4)
+for i in range(50):
+    pass
+
 # prefix tokens
 import tiktoken
 import numpy as np
@@ -233,3 +238,4 @@ for i in range(num_return_sequences):
     tokens = x[i, :max_length].tolist()
     decoded = enc.decode(tokens)
     print(">", decoded)
+
