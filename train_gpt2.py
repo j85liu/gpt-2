@@ -202,6 +202,12 @@ for i in range(50):
 import tiktoken
 import numpy as np
 
+def load_tokens(filename):
+    npt = np.load(filename)
+    npt = npt.astype(np.int32) # added after video
+    ptt = torch.tensor(npt, dtype=torch.long)
+    return ptt
+
 enc = tiktoken.get_encoding('gpt2')
 tokens = enc.encode("Hello, I'm a language model.")
 tokens = torch.tensor(tokens, dtype = torch.long)
