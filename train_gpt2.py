@@ -208,6 +208,14 @@ def load_tokens(filename):
     ptt = torch.tensor(npt, dtype=torch.long)
     return ptt
 
+class DataLoaderLite:
+    def __init__(self, B, T, process_rank, num_processes, split):
+        self.B = B
+        self.T = T
+        self.process_rank = process_rank
+        self.num_processes = num_processes
+        assert split in {'train', 'val'}
+
 enc = tiktoken.get_encoding('gpt2')
 tokens = enc.encode("Hello, I'm a language model.")
 tokens = torch.tensor(tokens, dtype = torch.long)
