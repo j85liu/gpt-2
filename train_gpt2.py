@@ -208,13 +208,28 @@ def load_tokens(filename):
     ptt = torch.tensor(npt, dtype=torch.long)
     return ptt
 
-class DataLoaderLite:
-    def __init__(self, B, T, process_rank, num_processes, split):
-        self.B = B
-        self.T = T
-        self.process_rank = process_rank
-        self.num_processes = num_processes
-        assert split in {'train', 'val'}
+# class DataLoaderLite:
+#     def __init__(self, B, T, process_rank, num_processes, split):
+#         self.B = B
+#         self.T = T
+#         self.process_rank = process_rank
+#         self.num_processes = num_processes
+#         assert split in {'train', 'val'}
+
+#         # get the shard filenames
+#         data_root = "edu_fineweb10B"
+#         shards = os.listdir(data_root)
+#         shards = [s for s in shards if split in s]
+#         shards = sorted(shards)
+#         shards = [os.path.join(data_root, s) for s in shards]
+#         self.shards = shards
+#         assert len(shards) > 0, f"no shards found for split {split}"
+#         if master_process:
+#             print(f"found {len(shards)} shards for split {split}")
+#         self.reset()
+
+#         def reset(self):
+#             pass
 
 enc = tiktoken.get_encoding('gpt2')
 tokens = enc.encode("Hello, I'm a language model.")
