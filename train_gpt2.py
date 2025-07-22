@@ -228,11 +228,16 @@ class DataLoaderLite:
             print(f"found {len(shards)} shards for split {split}")
         self.reset()
 
-        def reset(self):
-            # state, init at shard zero
-            self.current_shard = 0
-            self.tokens = load_tokens(self.shards[self.current_shard])
-            self.current_position = self.B * self.T * self.process_rank
+    def reset(self):
+        # state, init at shard zero
+        self.current_shard = 0
+        self.tokens = load_tokens(self.shards[self.current_shard])
+        self.current_position = self.B * self.T * self.process_rank
+
+
+# -----------------------------------------------------------------------------
+# helper function for HellaSwag eval
+# takes tokens, mask, and logits, returns the index of the completion with the lowest loss
 
 enc = tiktoken.get_encoding('gpt2')
 tokens = enc.encode("Hello, I'm a language model.")
