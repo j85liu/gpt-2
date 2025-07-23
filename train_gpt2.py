@@ -234,7 +234,20 @@ class DataLoaderLite:
         self.tokens = load_tokens(self.shards[self.current_shard])
         self.current_position = self.B * self.T * self.process_rank
 
-
+    def next_batch(self):
+        B, T = self.B, self.T
+        buf = self.tokens[self.current_position : self.current_position+B*T+1]
+        x = (buf[:-1]).view(B, T) # inputs
+        y = (buf[1:]).view(B, T) # targets
+        # advance the position in the tensor
+        self.current_position += B * T * self.num_processes
+        # if loading the next batch would be out of bounds, advance to next shard
+        if self.current_position + (B * T * self.num_processes + 1) > len(self.tokens):
+            self.current_shard = (self.current_shard + 1) % len(self.shards)
+            self.tokens = load_tokens(self.shards[self.current_shard])
+            self.current_position = B * T * self.process_rank
+        return x, y
+    
 # -----------------------------------------------------------------------------
 # helper function for HellaSwag eval
 # takes tokens, mask, and logits, returns the index of the completion with the lowest loss
