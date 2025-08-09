@@ -15,3 +15,6 @@ class GPTConfig:
     n_head: int = 6
     n_embd: int = 384
 
+class GPT(nn.Module):
+
+    
