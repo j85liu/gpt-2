@@ -7,6 +7,14 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 
+class Block(nn.Module):
+    
+    def __init__(self, config):
+        pass
+
+    def forward(self, x):
+        return x
+
 @dataclass
 class GPTConfig:
     block_size: int = 256
