@@ -17,6 +17,9 @@ class Block(nn.Module):
         self.mlp = MLP(config)
 
     def forward(self, x):
+        x = self.c_fc(x)
+        x = self.gelu(x)
+        x = self.c_pro(x)
         return x
 
 @dataclass
