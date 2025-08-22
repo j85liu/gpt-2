@@ -24,11 +24,11 @@ class Block(nn.Module):
 
 @dataclass
 class GPTConfig:
-    block_size: int = 256
+    block_size: int = 256 # max sequence length
     vocab_size: int = 65
-    n_layer: int = 6
-    n_head: int = 6
-    n_embd: int = 384
+    n_layer: int = 6 # number of layers
+    n_head: int = 6 # number of heads
+    n_embd: int = 384 # embedding dimension
 
 class GPT(nn.Module):
 
