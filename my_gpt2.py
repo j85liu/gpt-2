@@ -52,4 +52,7 @@ class GPT(nn.Module):
         from transformers import GPT2LMHeadModel
         print("Loading weights from pretrained gpt: %s" % model_type)
 
-        
+        # n_layer, n_head and n_embd are determined fromo model_type
+        config_ars = {
+            
+        }
