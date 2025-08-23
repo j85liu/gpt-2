@@ -55,5 +55,5 @@ class GPT(nn.Module):
         # n_layer, n_head and n_embd are determined fromo model_type
         config_ars = {
             'gpt2': dict(n_layer = 12, n_head = 12, n_embd = 768), # 124 M params
-            'gpt2-medium': dict(n_layer = 12, n_head = 12, n_embd = 768), # 350 M params
+            'gpt2-medium': dict(n_layer = 24, n_head = 16, n_embd = 1024), # 350 M params
         }
