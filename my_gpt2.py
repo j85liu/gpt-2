@@ -50,3 +50,6 @@ class GPT(nn.Module):
         """Loads pretrained GPT-2 model weights from huggingface"""
         assert model_type in {'gpt2', 'gpt2-medium', 'gpt2-large', 'gpt2-xl'}
         from transformers import GPT2LMHeadModel
+        print("Loading weights from pretrained gpt: %s" % model_type)
+
+        
