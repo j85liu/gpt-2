@@ -47,4 +47,5 @@ class GPT(nn.Module):
 
     @ classmethod
     def from_pretrained(cls, model_type):
-        pass
+        """Loads pretrained GPT-2 model weights from huggingface"""
+        assert model_type in {'gpt2', 'gpt2-medium', 'gpt2-large', 'gpt2-xl'}
