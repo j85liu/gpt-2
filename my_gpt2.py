@@ -56,4 +56,5 @@ class GPT(nn.Module):
         config_ars = {
             'gpt2': dict(n_layer = 12, n_head = 12, n_embd = 768), # 124 M params
             'gpt2-medium': dict(n_layer = 24, n_head = 16, n_embd = 1024), # 350 M params
+            'gpt2-large': dict(n_layer = 36, n_head = 20, n_embd = 1280), # 774 M params
         }
