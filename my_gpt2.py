@@ -48,6 +48,7 @@ class GPT(nn.Module):
     def forward(self, idx):
         # idx is of shape (B, T)
         B, T = idx.size()
+        assert T <= self.config.block_size, f"Cannot forward sequence of length {T}, block size"
         return logits
 
     @ classmethod
