@@ -48,7 +48,7 @@ class GPT(nn.Module):
     def forward(self, idx):
         # idx is of shape (B, T)
         B, T = idx.size()
-        pass
+        return logits
 
     @ classmethod
     def from_pretrained(cls, model_type):
