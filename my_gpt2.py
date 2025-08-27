@@ -49,6 +49,12 @@ class GPT(nn.Module):
         # idx is of shape (B, T)
         B, T = idx.size()
         assert T <= self.config.block_size, f"Cannot forward sequence of length {T}, block size"
+        # forward the token and position embeddings
+
+        # forward the blocks of the transformer
+
+        # forward the final layernomr and the classifier
+        
         return logits
 
     @ classmethod
