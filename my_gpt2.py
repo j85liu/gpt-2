@@ -46,6 +46,8 @@ class GPT(nn.Module):
         self.ln_head = nn.Linear(config.n_embd, config.vocab_size, bias = False)
 
     def forward(self, idx):
+        # idx is of shape (B, T)
+        B, T = idx.size()
         pass
 
     @ classmethod
