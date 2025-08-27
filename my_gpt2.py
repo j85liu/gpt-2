@@ -45,6 +45,9 @@ class GPT(nn.Module):
         
         self.ln_head = nn.Linear(config.n_embd, config.vocab_size, bias = False)
 
+    def forward(self, idx):
+        pass
+
     @ classmethod
     def from_pretrained(cls, model_type):
         """Loads pretrained GPT-2 model weights from huggingface"""
