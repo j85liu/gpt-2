@@ -50,7 +50,7 @@ class GPT(nn.Module):
         B, T = idx.size()
         assert T <= self.config.block_size, f"Cannot forward sequence of length {T}, block size"
         # forward the token and position embeddings
-
+        pos = torch.arange(0, T, dtype=torch.long, device=idx.device) # shape (T)
         # forward the blocks of the transformer
 
         # forward the final layernomr and the classifier
