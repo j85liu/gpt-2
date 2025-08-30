@@ -52,6 +52,8 @@ class GPT(nn.Module):
         # forward the token and position embeddings
         pos = torch.arange(0, T, dtype=torch.long, device=idx.device) # shape (T)
         pos_emb = self.transformer.wpe(pos) # position embeddings of shape (T, n_embd)
+        tok_emb = self.transformer.wte(idx) # token embeddings of shape (B, T, n_embd)
+        
         # forward the blocks of the transformer
 
         # forward the final layernomr and the classifier
