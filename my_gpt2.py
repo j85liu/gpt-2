@@ -59,6 +59,7 @@ class GPT(nn.Module):
             x = block(x)
         # forward the final layernomr and the classifier
         x = self.transformer.ln_f(x)
+        logits = self.lm_head(x) # (B, T, vocab_size)
         return logits
 
     @ classmethod
