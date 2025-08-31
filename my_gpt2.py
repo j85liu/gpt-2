@@ -58,7 +58,7 @@ class GPT(nn.Module):
         for block in self.transformer.h:
             x = block(x)
         # forward the final layernomr and the classifier
-        
+        x = self.transformer.ln_f(x)
         return logits
 
     @ classmethod
