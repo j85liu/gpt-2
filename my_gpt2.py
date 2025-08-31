@@ -55,7 +55,8 @@ class GPT(nn.Module):
         tok_emb = self.transformer.wte(idx) # token embeddings of shape (B, T, n_embd)
         x = tok_emb + pos_emb
         # forward the blocks of the transformer
-
+        for block in self.transformer.h:
+            x = block(x)
         # forward the final layernomr and the classifier
         
         return logits
