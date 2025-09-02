@@ -90,3 +90,5 @@ model.to('cpu')
 # prefix tokens
 import tiktoken
 enc = tiktoken.get_encoding('gpt2')
+tokens = enc.encode("Hello, I'm a language model,")
+tokens = torch.tensor(tokens, dtype=torch.long)
