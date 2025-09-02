@@ -86,3 +86,7 @@ max_length = 30
 model = GPT.from_pretrained('gpt2')
 model.eval()
 model.to('cpu')
+
+# prefix tokens
+import tiktoken
+enc = tiktoken.get_encoding('gpt2')
