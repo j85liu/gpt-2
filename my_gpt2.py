@@ -92,3 +92,5 @@ import tiktoken
 enc = tiktoken.get_encoding('gpt2')
 tokens = enc.encode("Hello, I'm a language model,")
 tokens = torch.tensor(tokens, dtype=torch.long)
+tokens = tokens.unsqueeze(0), repeat(num_return_sequences, 1)
+x = tokens.to('cpu')
