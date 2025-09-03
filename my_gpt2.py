@@ -97,3 +97,4 @@ x = tokens.to('cpu')
 
 # generate! right now x is (B, T) where B = 5, T = 8
 # set the seed to 42
+torch.manual_seed(42)
