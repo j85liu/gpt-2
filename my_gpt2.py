@@ -103,3 +103,5 @@ while x.size(1) < max_length:
     # forward the model to get the logits
     with torch.no_grad():
         logits = model(x) # (B, T, vocab_size)
+        # take the logits at the last position
+        logits = logits[:, -1, :] # (B, vocab_size)
