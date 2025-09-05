@@ -110,3 +110,5 @@ while x.size(1) < max_length:
         # do top-k sampling of 50 (huggingface pipeline default)
         # topk_probs here becomes (5, 50), topk_indices is (5, 50)
         topk_probs, topk_indices = torch.topk(probs, 50, dim=-1)
+        # select a token from the top-k probabilities
+        ix = torch.multinomial(topk_probs, 1) # (B, 1)
