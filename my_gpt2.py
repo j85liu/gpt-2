@@ -105,3 +105,6 @@ while x.size(1) < max_length:
         logits = model(x) # (B, T, vocab_size)
         # take the logits at the last position
         logits = logits[:, -1, :] # (B, vocab_size)
+        # get the probabilities
+        probs = F.softmax(logits, dim=-1)
+        
