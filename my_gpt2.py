@@ -102,3 +102,4 @@ torch.cuda.manual_seed(42)
 while x.size(1) < max_length:
     # forward the model to get the logits
     with torch.no_grad():
+        logits = model(x) # (B, T, vocab_size)
