@@ -100,4 +100,5 @@ x = tokens.to('cpu')
 torch.manual_seed(42)
 torch.cuda.manual_seed(42)
 while x.size(1) < max_length:
-    pass
+    # forward the model to get the logits
+    with torch.no_grad():
