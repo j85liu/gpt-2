@@ -107,4 +107,6 @@ while x.size(1) < max_length:
         logits = logits[:, -1, :] # (B, vocab_size)
         # get the probabilities
         probs = F.softmax(logits, dim=-1)
-        
+        # do top-k sampling of 50 (huggingface pipeline default)
+        # topk_probs here becomes (5, 50), topk_indices is (5, 50)
+        topk_probs, topk_indices = torch.topk(probs, 50, dim=-1)
