@@ -114,4 +114,5 @@ while x.size(1) < max_length:
         ix = torch.multinomial(topk_probs, 1) # (B, 1)
         # gather the corresponding indices
         xcol = torch.gather(topk_indices, -1, ix) # (B, 1)
-        
+        # append to the sequence
+        x = torch.cat((x, xcol), dim=1)
