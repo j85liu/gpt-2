@@ -112,3 +112,6 @@ while x.size(1) < max_length:
         topk_probs, topk_indices = torch.topk(probs, 50, dim=-1)
         # select a token from the top-k probabilities
         ix = torch.multinomial(topk_probs, 1) # (B, 1)
+        # gather the corresponding indices
+        xcol = torch.gather(topk_indices, -1, ix) # (B, 1)
+        
