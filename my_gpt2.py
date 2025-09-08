@@ -89,6 +89,10 @@ elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
 print(f"using device: {device}")
 
 # get a data batch
+import tiktoken
+enc = tiktoken.get_encoding('gpt2')
+with open('input.txt', 'r') as f:
+    text = f.read()
 
 # get logits
 
@@ -103,8 +107,7 @@ model.eval()
 model.to('cpu')
 
 # prefix tokens
-import tiktoken
-enc = tiktoken.get_encoding('gpt2')
+
 tokens = enc.encode("Hello, I'm a language model,")
 tokens = torch.tensor(tokens, dtype=torch.long) # (8, )
 tokens = tokens.unsqueeze(0), repeat(num_return_sequences, 1) # (5, 8)
