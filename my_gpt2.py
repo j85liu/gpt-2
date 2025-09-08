@@ -88,6 +88,12 @@ elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
     device = "mps"
 print(f"using device: {device}")
 
+# get a data batch
+
+# get logits
+
+
+# prefix tokens
 num_return_sequences = 5
 max_length = 30
 
