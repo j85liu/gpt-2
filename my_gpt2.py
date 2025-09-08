@@ -93,6 +93,10 @@ import tiktoken
 enc = tiktoken.get_encoding('gpt2')
 with open('input.txt', 'r') as f:
     text = f.read()
+text = text[:1000]
+tokens = enc.encode(text)
+B, T = 4, 32
+buf = torch.tensor(tokens[:B*T + 1])
 
 # get logits
 
@@ -106,12 +110,10 @@ model = GPT(GPTConfig)
 model.eval()
 model.to('cpu')
 
-# prefix tokens
-
-tokens = enc.encode("Hello, I'm a language model,")
-tokens = torch.tensor(tokens, dtype=torch.long) # (8, )
-tokens = tokens.unsqueeze(0), repeat(num_return_sequences, 1) # (5, 8)
-x = tokens.to('cpu')
+# tokens = enc.encode("Hello, I'm a language model,")
+# tokens = torch.tensor(tokens, dtype=torch.long) # (8, )
+# tokens = tokens.unsqueeze(0), repeat(num_return_sequences, 1) # (5, 8)
+# x = tokens.to('cpu')
 
 # generate! right now x is (B, T) where B = 5, T = 8
 # set the seed to 42
