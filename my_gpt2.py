@@ -101,16 +101,17 @@ x = buf[:-1].view(B, T)
 y = buf[1:].view(B, T)
 
 # get logits
+model = GPT(GPTConfig())
+model.to(device)
+logits = model(x)
 
 
 # prefix tokens
+model.eval()
 num_return_sequences = 5
 max_length = 30
 
 # model = GPT.from_pretrained('gpt2')
-model = GPT(GPTConfig)
-model.eval()
-model.to('cpu')
 
 # tokens = enc.encode("Hello, I'm a language model,")
 # tokens = torch.tensor(tokens, dtype=torch.long) # (8, )
