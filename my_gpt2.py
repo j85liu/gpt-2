@@ -105,7 +105,10 @@ model = GPT(GPTConfig())
 model.to(device)
 logits = model(x)
 
-
+print(logits.shape)
+import sys; sys.exit(
+    
+)
 # prefix tokens
 model.eval()
 num_return_sequences = 5
