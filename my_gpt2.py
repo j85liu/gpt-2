@@ -110,8 +110,8 @@ model.to(device)
 # logits, loss = model(x, y)
 
 optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4)
-
-print(loss)
+for i in range(50):
+    
 import sys; sys.exit(0)
 
 # prefix tokens
