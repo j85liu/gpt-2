@@ -103,12 +103,11 @@ y = buf[1:].view(B, T)
 # get logits
 model = GPT(GPTConfig())
 model.to(device)
-logits = model(x)
+logits, loss = model(x, y)
 
-print(logits.shape)
-import sys; sys.exit(
-    
-)
+print(loss)
+import sys; sys.exit(0)
+
 # prefix tokens
 model.eval()
 num_return_sequences = 5
