@@ -42,8 +42,10 @@ class GPT(nn.Module):
             h = nn.ModuleList([Block(config) for _ in range(config.n_layer)]),
             ln_f = nn.LayerNorm(config.n_embd),
         ))
-        
         self.ln_head = nn.Linear(config.n_embd, config.vocab_size, bias = False)
+
+        # weight sharing scheme
+        self.lm_head = nn.Linear(config.n_embd, config.vocab_size, bias=False)
 
     def forward(self, idx, targets=None):
         # idx is of shape (B, T)
