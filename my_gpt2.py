@@ -47,6 +47,12 @@ class GPT(nn.Module):
         # weight sharing scheme
         self.transformer.wte.weight = self.lm_head.weight
 
+        # init params
+        self.apply(self._init_weights)
+
+    def _init_weights_(self.module):
+        
+
     def forward(self, idx, targets=None):
         # idx is of shape (B, T)
         B, T = idx.size()
