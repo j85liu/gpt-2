@@ -37,7 +37,6 @@ class CausalSelfAttention(nn.Module):
         # output projection
         y = self.c_proj(y)
         return y
-    pass
 
 
 class MLP(nn.Module):
