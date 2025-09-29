@@ -151,8 +151,8 @@ class GPT(nn.Module):
         sd_keys = [k for k in sd_keys if not k.endswith('.attn.bias')]
 
         # init a huggingface/transformers model
-        
-
+        model_hf = GPT2LMHeadModel.from_pretrained(model_type)
+        sd_hf = model_hf.state_dict()
 
 # --------------------------------------------------------
 
