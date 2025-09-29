@@ -150,6 +150,9 @@ class GPT(nn.Module):
         sd_keys = sd.keys()
         sd_keys = [k for k in sd_keys if not k.endswith('.attn.bias')]
 
+        # init a huggingface/transformers model
+        
+
 
 # --------------------------------------------------------
 
