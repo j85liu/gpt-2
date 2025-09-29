@@ -135,7 +135,7 @@ class GPT(nn.Module):
         print("Loading weights from pretrained gpt: %s" % model_type)
 
         # n_layer, n_head and n_embd are determined fromo model_type
-        config_ars = {
+        config_args = {
             'gpt2': dict(n_layer = 12, n_head = 12, n_embd = 768), # 124 M params
             'gpt2-medium': dict(n_layer = 24, n_head = 16, n_embd = 1024), # 350 M params
             'gpt2-large': dict(n_layer = 36, n_head = 20, n_embd = 1280), # 774 M params
@@ -143,6 +143,13 @@ class GPT(nn.Module):
         } [model_type]
         config_args['vocab_size'] = 50257 # always 50257 for GPT model checkpoints
         config_args['block_size'] = 1024 # always 1024 for GPT model checkpoints
+        # create a from-scratch initialized minGPT model
+        config = GPTConfig(**config_args)
+        model = GPT(config)
+        sd = model.state_dict()
+        sd_keys = sd.keys()
+        sd_keys = [k for k in sd_keys if not k.endswith('.attn.bias')]
+
 
 # --------------------------------------------------------
 
