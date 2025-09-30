@@ -161,6 +161,12 @@ class DataLoaderLite:
         self.B = B
         self.T = T
         
+        # at init load tokens from disk and store them in memory
+
+        # state
+        self.current_position = 0
+
+    
 
 
 # attempt to autodetect the device
