@@ -157,8 +157,10 @@ class GPT(nn.Module):
 # --------------------------------------------------------
 
 class DataLoaderLite:
-    def __init__(self):
-        pass
+    def __init__(self, B, T):
+        self.B = B
+        self.T = T
+        
 
 
 # attempt to autodetect the device
