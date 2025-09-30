@@ -156,6 +156,11 @@ class GPT(nn.Module):
 
 # --------------------------------------------------------
 
+class DataLoaderLite:
+    def __init__(self):
+        pass
+
+
 # attempt to autodetect the device
 device = "cpu"
 if torch.cuda.is_available():
