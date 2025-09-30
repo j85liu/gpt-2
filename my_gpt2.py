@@ -173,7 +173,12 @@ class DataLoaderLite:
         # state
         self.current_position = 0
 
-    
+    def next_batch(self):
+        B, T = self.B, self.T
+
+        # advance the position in the tensor
+
+        # if loading the next batch would be out of bounds, reset
 
 
 # attempt to autodetect the device
