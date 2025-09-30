@@ -162,6 +162,12 @@ class DataLoaderLite:
         self.T = T
         
         # at init load tokens from disk and store them in memory
+        with open('input.txt', 'r') as f:
+            text = f.read()
+        enc = tiktoken.get_encoding('gpt2')
+        tokens = enc.encode(text)
+        self.tokens = torch.tensor(tokens)
+        
 
         # state
         self.current_position = 0
