@@ -191,6 +191,8 @@ elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
     device = "mps"
 print(f"using device: {device}")
 
+train_loader = DataLoaderLite(B=4, T=32)
+
 # get a data batch
 import tiktoken
 enc = tiktoken.get_encoding('gpt2')
