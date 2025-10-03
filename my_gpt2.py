@@ -193,6 +193,10 @@ print(f"using device: {device}")
 
 train_loader = DataLoaderLite(B=4, T=32)
 
+# get logits
+model = GPT(GPTConfig())
+model.to(device)
+
 # get a data batch
 import tiktoken
 enc = tiktoken.get_encoding('gpt2')
@@ -205,11 +209,7 @@ buf = torch.tensor(tokens[:B*T + 1])
 x = buf[:-1].view(B, T)
 y = buf[1:].view(B, T)
 
-# get logits
-model = GPT(GPTConfig())
-model.to(device)
-# logits, loss = model(x, y)
-
+# optimize
 optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4)
 for i in range(50):
     
