@@ -182,6 +182,7 @@ class DataLoaderLite:
 
         # if loading the next batch would be out of bounds, reset
 
+# --------------------------------------------------------
 
 # attempt to autodetect the device
 device = "cpu"
