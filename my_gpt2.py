@@ -197,21 +197,24 @@ train_loader = DataLoaderLite(B=4, T=32)
 model = GPT(GPTConfig())
 model.to(device)
 
-# get a data batch
-import tiktoken
-enc = tiktoken.get_encoding('gpt2')
-with open('input.txt', 'r') as f:
-    text = f.read()
-text = text[:1000]
-tokens = enc.encode(text)
-B, T = 4, 32
-buf = torch.tensor(tokens[:B*T + 1])
-x = buf[:-1].view(B, T)
-y = buf[1:].view(B, T)
+# # get a data batch
+# import tiktoken
+# enc = tiktoken.get_encoding('gpt2')
+# with open('input.txt', 'r') as f:
+#     text = f.read()
+# text = text[:1000]
+# tokens = enc.encode(text)
+# B, T = 4, 32
+# buf = torch.tensor(tokens[:B*T + 1])
+# x = buf[:-1].view(B, T)
+# y = buf[1:].view(B, T)
 
 # optimize
 optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4)
 for i in range(50):
+    x, y = train_loader.next_batch()
+    x, y = x.to(device), y.to(device)
+    optimizer.zero_grad()
     
 import sys; sys.exit(0)
 
