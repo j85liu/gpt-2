@@ -181,6 +181,9 @@ class DataLoaderLite:
         # advance the position in the tensor
         self.current_position += B*T
         # if loading the next batch would be out of bounds, reset
+        if self.current_position + (B * T + 1) > len(self.tokens):
+            self.current_position = 0
+        return x, y
 
 # --------------------------------------------------------
 
