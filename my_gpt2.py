@@ -179,7 +179,7 @@ class DataLoaderLite:
         x = (buf[:-1]).view(B, T) # inputs
         y = (buf[1:]).view(B, T) # targets
         # advance the position in the tensor
-
+        self.current_position += B*T
         # if loading the next batch would be out of bounds, reset
 
 # --------------------------------------------------------
