@@ -197,6 +197,8 @@ print(f"using device: {device}")
 
 train_loader = DataLoaderLite(B=4, T=32)
 
+torch.set_float32_matmul_precision('high')
+
 # get logits
 model = GPT(GPTConfig())
 model.to(device)
