@@ -199,6 +199,7 @@ class DataLoaderLite:
         return x, y
 
 # --------------------------------------------------------
+import time
 
 # attempt to autodetect the device
 device = "cpu"
