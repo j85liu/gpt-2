@@ -168,6 +168,7 @@ class GPT(nn.Module):
         assert len(sd_keys_hf) == len(sd_keys), f"mismatched keys: {len(sd_keys_hf)} != {len(sd_keys)}"
 
 # --------------------------------------------------------
+import tiktoken
 
 class DataLoaderLite:
     def __init__(self, B, T):
