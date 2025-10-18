@@ -235,6 +235,9 @@ model = torch.compile(model)
 # x = buf[:-1].view(B, T)
 # y = buf[1:].view(B, T)
 
+max_lr = 6e-4
+min_lr = max_lr * 0.1
+
 # optimize
 optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4)
 for i in range(50):
