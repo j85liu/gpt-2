@@ -240,7 +240,9 @@ min_lr = max_lr * 0.1
 warmup_steps = 10
 max_steps = 50
 def get_lr(it):
-    pass
+    # 1) linear warmup for warmup_iters steps
+    if it < warmup_steps:
+        return max_lr * (it+1) / warmup_steps
 
 
 # optimize
