@@ -246,6 +246,8 @@ def get_lr(it):
     # 2) if it > lr_decay_iters, return min learning rate
     if it > max_steps:
         return min_lr
+    # 3) in between, use cosine decay down to min learning rate
+    decay_ratio = (it - warmup_steps) / (max_steps - warmup_steps)
 
 
 # optimize
