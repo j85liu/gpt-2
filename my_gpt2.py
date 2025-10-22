@@ -267,7 +267,8 @@ for step in range(max_steps):
     loss.backward()
     # determine and set the learning rate for this iteration
     lr = get_lr(step)
-    
+    for param_group in optimizer.param_groups:
+        param_group['lr'] = lr
     optimizer.step()
     torch.cuda.synchronize()
     t1 = time.time()
