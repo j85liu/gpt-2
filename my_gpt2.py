@@ -170,6 +170,9 @@ class GPT(nn.Module):
             if any(k.endswith(w) for w in transposed):
                 # special treatment for the Conv1D weights we need to transpose
 
+    def configure_optimizer(self, weight_decay, learning_rate, device):
+        pass
+
 # --------------------------------------------------------
 import tiktoken
 
