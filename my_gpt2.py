@@ -265,6 +265,9 @@ for step in range(max_steps):
     with torch.autocast(device_type=device, dtype=torch.bfloat16):
         logits, loss = model(x, y)
     loss.backward()
+    # determine and set the learning rate for this iteration
+    lr = get_lr(step)
+    
     optimizer.step()
     torch.cuda.synchronize()
     t1 = time.time()
