@@ -169,6 +169,7 @@ class GPT(nn.Module):
         for k in sd_keys_hf:
             if any(k.endswith(w) for w in transposed):
                 # special treatment for the Conv1D weights we need to transpose
+                pass
 
     def configure_optimizer(self, weight_decay, learning_rate, device):
         pass
