@@ -273,6 +273,7 @@ for step in range(max_steps):
     torch.cuda.synchronize()
     t1 = time.time()
     dt = (t1 - t0)*1000 # time difference in milliseconds
+    tokens_processed = train_loader.B * train_loader.T
     tokens_per_sec = (train_loader.B * train_loader.T) / (t1-t0)
     print(f"step {i}, loss: {loss.item()}, dt: {dt:.2f}ms")
     
