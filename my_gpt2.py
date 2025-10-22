@@ -254,7 +254,8 @@ def get_lr(it):
 
 
 # optimize
-optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4, betas=(0.9, 0.95), eps=1e-8)
+# optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4, betas=(0.9, 0.95), eps=1e-8)
+
 for step in range(max_steps):
     t0 = time.time()
     x, y = train_loader.next_batch()
