@@ -172,7 +172,8 @@ class GPT(nn.Module):
                 pass
 
     def configure_optimizer(self, weight_decay, learning_rate, device):
-        pass
+        # start with all of the candidate parameters (that require grad)
+        param_dict = {pn: p for pn, p in self.named_parameters()}
 
 # --------------------------------------------------------
 import tiktoken
