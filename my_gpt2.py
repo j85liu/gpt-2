@@ -178,7 +178,10 @@ class GPT(nn.Module):
         # i.e. all weight tensors in matmul + embeddings decay, all biases and layernorms don't.
         decay_params = [p for n, p in param_dict.items() if p.dim() >= 2]
         nodecay_params = [p for n, p in param_dict.items() if p.dim() < 2]
-        
+        optim_groups = [
+            {'params': decay_params, 'weight_decay': weight_decay},
+            {'params': nodecay_params, 'weight_decay': 0.0},
+        ]
 
 # --------------------------------------------------------
 import tiktoken
