@@ -174,6 +174,10 @@ class GPT(nn.Module):
     def configure_optimizer(self, weight_decay, learning_rate, device):
         # start with all of the candidate parameters (that require grad)
         param_dict = {pn: p for pn, p in self.named_parameters()}
+        # create optim groups. Any parameters that is 2D will be weight decayed, otherwise no.
+        # i.e. all weight tensors in matmul + embeddings decay, all biases and layernorms don't.
+        
+        
 
 # --------------------------------------------------------
 import tiktoken
