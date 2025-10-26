@@ -189,6 +189,7 @@ class GPT(nn.Module):
         # Create AdamW optimizer and use the fused version if available
         fused_available = 'fused' in inspect.signature(torch.optim.AdamW).parameters
         use_fused = fused_available and 'cuda' in device
+        print(f"using fused AdamW: {use_fused}")
 
 # --------------------------------------------------------
 import tiktoken
