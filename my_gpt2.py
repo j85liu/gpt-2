@@ -244,7 +244,7 @@ torch_batch_size = 524288 # 2**19 ~ 0.5M, in number of tokens
 B = 16 # micro batch size
 T = 1024 # sequence length
 
-train_loader = DataLoaderLite(B=16, T=1024)
+train_loader = DataLoaderLite(B, T)
 
 torch.set_float32_matmul_precision('high')
 
