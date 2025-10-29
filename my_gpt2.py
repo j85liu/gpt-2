@@ -241,6 +241,8 @@ if torch.cuda.is_available():
     torch.cuda.manual_seed(1337)
 
 torch_batch_size = 524288 # 2**19 ~ 0.5M, in number of tokens
+B = 16 # micro batch size
+T = 1024 # sequence length
 
 train_loader = DataLoaderLite(B=16, T=1024)
 
