@@ -240,6 +240,8 @@ torch.manual_seed(1337)
 if torch.cuda.is_available():
     torch.cuda.manual_seed(1337)
 
+torch_batch_size = 524288 # 2**19 ~ 0.5M, in number of tokens
+
 train_loader = DataLoaderLite(B=16, T=1024)
 
 torch.set_float32_matmul_precision('high')
