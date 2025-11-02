@@ -300,6 +300,7 @@ for step in range(max_steps):
         with torch.autocast(device_type=device, dtype=torch.bfloat16):
             logits, loss = model(x, y)
         loss.backward()
+    norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
     # determine and set the learning rate for this iteration
     lr = get_lr(step)
     for param_group in optimizer.param_groups:
