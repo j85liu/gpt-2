@@ -300,6 +300,8 @@ for step in range(max_steps):
         with torch.autocast(device_type=device, dtype=torch.bfloat16):
             logits, loss = model(x, y)
         # we have to scale the loss to account for the gradient accumulation
+        # because the gradients just add on for each successive backward()
+        
         loss.backward()
     norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
     # determine and set the learning rate for this iteration
