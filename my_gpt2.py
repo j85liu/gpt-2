@@ -124,7 +124,6 @@ class GPT(nn.Module):
             x = block(x)
         # forward the final layernomr and the classifier
         x = self.transformer.ln_f(x)
-        
         logits = self.lm_head(x) # (B, T, vocab_size)
         loss = None
         if targets is not None:
@@ -294,6 +293,7 @@ optimizer = model.configure_optimizers(weight_decay=0.1, learning_rate=6e-4, dev
 for step in range(max_steps):
     t0 = time.time()
     optimizer.zero_grad()
+    loss_accum = 0.0
     for micro_step in range(grad_accum_steps):
         x, y = train_loader.next_batch()
         x, y = x.to(device), y.to(device)
