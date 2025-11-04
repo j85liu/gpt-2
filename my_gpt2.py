@@ -301,7 +301,8 @@ for step in range(max_steps):
             logits, loss = model(x, y)
         # we have to scale the loss to account for the gradient accumulation
         # because the gradients just add on for each successive backward()
-        
+        # addition of gradients corresponds to a SUM in the objective, but
+        # instead of a SUM we want MEAN. Scale the loss here so it comes out right
         loss.backward()
     norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
     # determine and set the learning rate for this iteration
