@@ -225,6 +225,9 @@ class DataLoaderLite:
         return x, y
 
 # --------------------------------------------------------
+# run the training loop
+from torch.distributed import init_process_group, destroy_process_group
+
 import time
 
 # attempt to autodetect the device
