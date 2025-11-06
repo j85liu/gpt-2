@@ -232,6 +232,7 @@ from torch.distributed import init_process_group, destroy_process_group
 ddp = int(os.environ.get('RANK', -1)) != -1
 if ddp:
     assert torch.cuda.is_available()
+    init_process_group(backend='nccl')
 else:
     pass
 
