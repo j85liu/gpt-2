@@ -231,7 +231,7 @@ from torch.distributed import init_process_group, destroy_process_group
 # Set up DDP (distributed data parallel)
 ddp = int(os.environ.get('RANK', -1)) != -1
 if ddp:
-    pass
+    assert torch.cuda.is_available()
 else:
     pass
 
