@@ -228,6 +228,9 @@ class DataLoaderLite:
 # run the training loop
 from torch.distributed import init_process_group, destroy_process_group
 
+# Set up DDP (distributed data parallel)
+ddp = int(os.environ.get('RANK', -1)) != -1
+
 import time
 
 # attempt to autodetect the device
