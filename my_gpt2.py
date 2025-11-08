@@ -233,7 +233,8 @@ ddp = int(os.environ.get('RANK', -1)) != -1
 if ddp:
     assert torch.cuda.is_available()
     init_process_group(backend='nccl')
-    ddp_rank = int(os.environ('RANK'))
+    ddp_rank = int(os.environ['RANK'])
+    ddp_local_rank = int(os.environ['LOCAL_RANK'])
 else:
     pass
 
