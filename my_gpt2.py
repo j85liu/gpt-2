@@ -235,6 +235,7 @@ if ddp:
     init_process_group(backend='nccl')
     ddp_rank = int(os.environ['RANK'])
     ddp_local_rank = int(os.environ['LOCAL_RANK'])
+    ddp_world_size = int(os.environ['WORLD_SIZE'])
 else:
     pass
 
