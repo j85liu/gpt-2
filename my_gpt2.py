@@ -242,6 +242,7 @@ if ddp:
 else:
     # vanilla, non-DDP run
     ddp_rank = 0
+    ddp_local_rank = 0
 
 import time
 
