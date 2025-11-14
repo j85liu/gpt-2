@@ -240,7 +240,8 @@ if ddp:
     torch.cuda.set_device(device)
     master_process = ddp_rank == 0
 else:
-    pass
+    # vanilla, non-DDP run
+    ddp_rank = 0
 
 import time
 
