@@ -253,10 +253,6 @@ else:
         device = "mps"
     print(f"using device: {device}")
 
-import time
-
-
-
 torch.manual_seed(1337)
 if torch.cuda.is_available():
     torch.cuda.manual_seed(1337)
