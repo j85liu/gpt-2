@@ -196,7 +196,7 @@ class GPT(nn.Module):
 import tiktoken
 
 class DataLoaderLite:
-    def __init__(self, B, T):
+    def __init__(self, process_rank, B, T):
         self.B = B
         self.T = T
         self.process_rank = process_rank
