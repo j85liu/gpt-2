@@ -199,6 +199,7 @@ class DataLoaderLite:
     def __init__(self, B, T):
         self.B = B
         self.T = T
+        self.process_rank = process_rank
         
         # at init load tokens from disk and store them in memory
         with open('input.txt', 'r') as f:
