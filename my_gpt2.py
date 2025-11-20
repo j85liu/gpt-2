@@ -223,7 +223,7 @@ class DataLoaderLite:
         self.current_position += B * T * self.num_processes
         # if loading the next batch would be out of bounds, reset
         if self.current_position + (B * T * self.num_processes + 1) > len(self.tokens):
-            self.current_position = 0
+            self.current_position = self.B * self.T * self.process_rank
         return x, y
 
 # --------------------------------------------------------
