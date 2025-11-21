@@ -6,6 +6,7 @@ from dataclasses import dataclass
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
+import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
 
 # ---------------------------------------------------
