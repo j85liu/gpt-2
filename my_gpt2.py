@@ -347,7 +347,8 @@ for step in range(max_steps):
     dt = (t1 - t0)*1000 # time difference in milliseconds
     tokens_processed = train_loader.B * train_loader.T * grad_accum_steps
     tokens_per_sec = tokens_processed/dt
-    print(f"step {i}, loss: {loss.item()}, dt: {dt:.2f}ms")
+    if master_process:
+        print(f"step {step:4d} | loss: {loss_accum.item()} | lr {lr:.4e} | norm: {norm:.4f} | dt: {dt:.2f}ms")
     
 import sys; sys.exit(0)
 
