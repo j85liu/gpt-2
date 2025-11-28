@@ -283,18 +283,6 @@ if ddp:
     model = DDP(model, device_ids=[ddp_local_rank])
 raw_model = model.module if ddp else model # always contains the "raw" unwrapped module
 
-# # get a data batch
-# import tiktoken
-# enc = tiktoken.get_encoding('gpt2')
-# with open('input.txt', 'r') as f:
-#     text = f.read()
-# text = text[:1000]
-# tokens = enc.encode(text)
-# B, T = 4, 32
-# buf = torch.tensor(tokens[:B*T + 1])
-# x = buf[:-1].view(B, T)
-# y = buf[1:].view(B, T)
-
 max_lr = 6e-4
 min_lr = max_lr * 0.1
 warmup_steps = 10
