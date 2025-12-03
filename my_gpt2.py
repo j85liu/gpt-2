@@ -308,6 +308,11 @@ optimizer = raw_model.configure_optimizers(weight_decay=0.1, learning_rate=6e-4,
 
 for step in range(max_steps):
     t0 = time.time()
+
+    # once in a while evaluate our validation loss
+    if step % 100 == 0:
+        model.eval()
+        
     optimizer.zero_grad()
     loss_accum = 0.0
     for micro_step in range(grad_accum_steps):
