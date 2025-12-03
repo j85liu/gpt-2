@@ -312,6 +312,7 @@ for step in range(max_steps):
     # once in a while evaluate our validation loss
     if step % 100 == 0:
         model.eval()
+        val_loader.reset()
     
 
     # training loop
