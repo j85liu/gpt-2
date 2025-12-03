@@ -312,7 +312,9 @@ for step in range(max_steps):
     # once in a while evaluate our validation loss
     if step % 100 == 0:
         model.eval()
-        
+    
+
+    # training loop
     optimizer.zero_grad()
     loss_accum = 0.0
     for micro_step in range(grad_accum_steps):
