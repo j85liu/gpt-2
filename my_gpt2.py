@@ -315,6 +315,7 @@ for step in range(max_steps):
     
 
     # training loop
+    model.train()
     optimizer.zero_grad()
     loss_accum = 0.0
     for micro_step in range(grad_accum_steps):
