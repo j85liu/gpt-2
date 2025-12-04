@@ -313,7 +313,12 @@ for step in range(max_steps):
     if step % 100 == 0:
         model.eval()
         val_loader.reset()
-    
+        with torch.no_grad():
+            # code
+        if ddp:
+            pass
+        if master_process:
+            pass
 
     # training loop
     model.train()
