@@ -314,7 +314,8 @@ for step in range(max_steps):
         model.eval()
         val_loader.reset()
         with torch.no_grad():
-            # code
+            val_loss_accum = 0.0
+            val_loss_steps = 20
         if ddp:
             pass
         if master_process:
