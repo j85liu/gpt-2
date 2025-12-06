@@ -317,7 +317,7 @@ for step in range(max_steps):
             val_loss_accum = 0.0
             val_loss_steps = 20
         if ddp:
-            pass
+            dist.all_reduce(val_loss_accum, op = dist.ReduceOp.AVG)
         if master_process:
             pass
 
