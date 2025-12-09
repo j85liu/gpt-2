@@ -204,6 +204,7 @@ class DataLoaderLite:
         self.T = T
         self.process_rank = process_rank
         self.num_processes = num_processes
+        assert split in {'train', 'val'}
         
         # at init load tokens from disk and store them in memory
         with open('input.txt', 'r') as f:
