@@ -319,7 +319,7 @@ for step in range(max_steps):
         if ddp:
             dist.all_reduce(val_loss_accum, op = dist.ReduceOp.AVG)
         if master_process:
-            pass
+            print(f"validation loss: {val_loss_accum.item():.4f}")
 
     # training loop
     model.train()
