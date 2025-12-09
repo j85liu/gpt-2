@@ -316,6 +316,8 @@ for step in range(max_steps):
         with torch.no_grad():
             val_loss_accum = 0.0
             val_loss_steps = 20
+            for _ in range(val_loss_steps):
+                val_loss_accum += loss.detach()
         if ddp:
             dist.all_reduce(val_loss_accum, op = dist.ReduceOp.AVG)
         if master_process:
