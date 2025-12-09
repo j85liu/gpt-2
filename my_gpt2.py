@@ -317,6 +317,8 @@ for step in range(max_steps):
             val_loss_accum = 0.0
             val_loss_steps = 20
             for _ in range(val_loss_steps):
+                x, y = val_loader.next_batch()
+                x, y = x.to(device), y.to(device)
                 val_loss_accum += loss.detach()
         if ddp:
             dist.all_reduce(val_loss_accum, op = dist.ReduceOp.AVG)
