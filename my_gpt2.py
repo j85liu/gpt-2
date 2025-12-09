@@ -205,6 +205,9 @@ class DataLoaderLite:
         self.process_rank = process_rank
         self.num_processes = num_processes
         assert split in {'train', 'val'}
+
+        # get the shard filenames
+        data_root = "edu_fineweb10B"
         
         # at init load tokens from disk and store them in memory
         with open('input.txt', 'r') as f:
