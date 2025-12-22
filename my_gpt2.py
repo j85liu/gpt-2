@@ -208,6 +208,7 @@ class DataLoaderLite:
 
         # get the shard filenames
         data_root = "edu_fineweb10B"
+        shards = os.listdir(data_root)
         
         # at init load tokens from disk and store them in memory
         with open('input.txt', 'r') as f:
