@@ -211,6 +211,7 @@ class DataLoaderLite:
         shards = os.listdir(data_root)
         shards = [s for s in shards if split in s]
         shards = sorted(shards)
+        shards = [os.path.join(data_root, s) for s in shards]
         
         # at init load tokens from disk and store them in memory
         with open('input.txt', 'r') as f:
