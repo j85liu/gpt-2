@@ -210,6 +210,7 @@ class DataLoaderLite:
         data_root = "edu_fineweb10B"
         shards = os.listdir(data_root)
         shards = [s for s in shards if split in s]
+        shards = sorted(shards)
         
         # at init load tokens from disk and store them in memory
         with open('input.txt', 'r') as f:
