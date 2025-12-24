@@ -213,6 +213,7 @@ class DataLoaderLite:
         shards = sorted(shards)
         shards = [os.path.join(data_root, s) for s in shards]
         self.shards = shards
+        assert len(shards) > 0, f"no shards found for split {split}"
         
         # at init load tokens from disk and store them in memory
         with open('input.txt', 'r') as f:
