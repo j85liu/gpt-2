@@ -222,6 +222,7 @@ class DataLoaderLite:
             # state, init at shard zero
             self.current_shard = 0
             self.tokens = load_tokens(self.shards[self.current_shard])
+            self.current_position = self.B * self.T * self.process_rank
         
         # at init load tokens from disk and store them in memory
         with open('input.txt', 'r') as f:
