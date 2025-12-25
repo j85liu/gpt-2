@@ -217,6 +217,9 @@ class DataLoaderLite:
         if master_process:
             print(f"found {len{shards}} shards for split {split}")
         self.reset()
+
+        def reset(self):
+            
         
         # at init load tokens from disk and store them in memory
         with open('input.txt', 'r') as f:
