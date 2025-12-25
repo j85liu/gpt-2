@@ -219,7 +219,7 @@ class DataLoaderLite:
         self.reset()
 
         def reset(self):
-            
+            # state, init at shard zero
         
         # at init load tokens from disk and store them in memory
         with open('input.txt', 'r') as f:
