@@ -225,7 +225,7 @@ class DataLoaderLite:
             self.current_position = self.B * self.T * self.process_rank
 
         def next_batch(self):
-            pass
+            B, T = self.B, self.T
         
         # at init load tokens from disk and store them in memory
         with open('input.txt', 'r') as f:
