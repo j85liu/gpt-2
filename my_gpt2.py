@@ -227,6 +227,8 @@ class DataLoaderLite:
         def next_batch(self):
             B, T = self.B, self.T
             buf = self.tokens[self.current_position : self.current_position+B*T+1]
+            x = (buf[:-1]).view(B, T) # inputs
+            y = (buf[1:]).view(B, T) # targets
         
         # at init load tokens from disk and store them in memory
         with open('input.txt', 'r') as f:
