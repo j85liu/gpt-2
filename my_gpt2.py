@@ -237,6 +237,11 @@ class DataLoaderLite:
         return x, y
 
 # --------------------------------------------------------
+# simple launch:
+# python train_gpt2.py
+# DDP launch for e.g. 8 GPUs:
+# torchrun --standalone -nproc_per_node=8 train_gpt2.py
+
 # run the training loop
 from torch.distributed import init_process_group, destroy_process_group
 
