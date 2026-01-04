@@ -249,6 +249,7 @@ from torch.distributed import init_process_group, destroy_process_group
 # torchrun command sets the env variables RANK, LOCAL_RANK, and WORLD_SIZE
 ddp = int(os.environ.get('RANK', -1)) != -1
 if ddp:
+    # use of DDP atm demands CUDA, we set the device appropriately according to rank
     assert torch.cuda.is_available()
     init_process_group(backend='nccl')
     ddp_rank = int(os.environ['RANK'])
