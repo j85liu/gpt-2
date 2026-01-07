@@ -341,6 +341,7 @@ for step in range(max_steps):
         if master_process:
             print(f"validation loss: {val_loss_accum.item():.4f}")
 
+    # once in a while generate from the model (except step 0, which is noise)
     # training loop
     model.train()
     optimizer.zero_grad()
