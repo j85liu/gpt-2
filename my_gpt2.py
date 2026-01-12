@@ -342,7 +342,10 @@ for step in range(max_steps):
             print(f"validation loss: {val_loss_accum.item():.4f}")
 
     # once in a while generate from the model (except step 0, which is noise)
-    # training loop
+    # disabled because torch.compile throws an error
+    # if torch.compile disabled, works
+    if step > 0 and step % 100 == 0:
+        model.eval()
     model.train()
     optimizer.zero_grad()
     loss_accum = 0.0
