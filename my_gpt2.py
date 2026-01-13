@@ -348,6 +348,7 @@ for step in range(max_steps):
         model.eval()
         num_return_sequences = 4
         max_length = 32
+        tokens = enc.encode("Hello I'm a language model,")
     model.train()
     optimizer.zero_grad()
     loss_accum = 0.0
