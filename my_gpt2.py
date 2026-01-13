@@ -351,6 +351,7 @@ for step in range(max_steps):
         tokens = enc.encode("Hello I'm a language model,")
         tokens = torch.tensor(tokens, dtype = torch.long)
         tokens = tokens.unsqueeze(0).repeat(num_return_sequences, 1)
+        xgen = tokens.to(device)
     model.train()
     optimizer.zero_grad()
     loss_accum = 0.0
