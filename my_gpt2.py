@@ -346,6 +346,8 @@ for step in range(max_steps):
     # if torch.compile disabled, works
     if step > 0 and step % 100 == 0:
         model.eval()
+        num_return_sequences = 4
+        
     model.train()
     optimizer.zero_grad()
     loss_accum = 0.0
