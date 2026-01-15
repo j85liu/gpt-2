@@ -352,6 +352,8 @@ for step in range(max_steps):
         tokens = torch.tensor(tokens, dtype = torch.long)
         tokens = tokens.unsqueeze(0).repeat(num_return_sequences, 1)
         xgen = tokens.to(device)
+        sample_rng = torch.Generator(device=device)
+        sample_rng.manual_seed(42 + ddp_rank)
     model.train()
     optimizer.zero_grad()
     loss_accum = 0.0
