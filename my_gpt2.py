@@ -354,6 +354,8 @@ for step in range(max_steps):
         xgen = tokens.to(device)
         sample_rng = torch.Generator(device=device)
         sample_rng.manual_seed(42 + ddp_rank)
+        while xgen.size(1) < max_length:
+            # forward the model to get the logits
     model.train()
     optimizer.zero_grad()
     loss_accum = 0.0
