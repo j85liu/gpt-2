@@ -365,6 +365,9 @@ for step in range(max_steps):
                 # do top-k sampling of 50 (huggingface pipeline default )
                 # topk_prob here becomes (5, 50), top_k indices is (5, 50)
                 topk_probs, topk_indices = torch.topk(probs, 50, dim=-1)
+                # select a token from the top-k probabilities
+                # note: multinomial does not demand the input to sum to 1
+                ix = torch.multinomial(topk_probs, 1, generator=sample_rng) # (B, 1)
     model.train()
     optimizer.zero_grad()
     loss_accum = 0.0
