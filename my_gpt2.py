@@ -368,6 +368,8 @@ for step in range(max_steps):
                 # select a token from the top-k probabilities
                 # note: multinomial does not demand the input to sum to 1
                 ix = torch.multinomial(topk_probs, 1, generator=sample_rng) # (B, 1)
+                # gather the corresponding indices
+                xcol = torch.gather(topk_indices, -1, ix) # (B, 1)
     model.train()
     optimizer.zero_grad()
     loss_accum = 0.0
