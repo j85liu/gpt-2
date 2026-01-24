@@ -370,6 +370,8 @@ for step in range(max_steps):
                 ix = torch.multinomial(topk_probs, 1, generator=sample_rng) # (B, 1)
                 # gather the corresponding indices
                 xcol = torch.gather(topk_indices, -1, ix) # (B, 1)
+                # append to the sequence
+                xgen = torch.cat((xgen, xcol), dim = 1)
     model.train()
     optimizer.zero_grad()
     loss_accum = 0.0
