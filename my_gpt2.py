@@ -372,6 +372,11 @@ for step in range(max_steps):
                 xcol = torch.gather(topk_indices, -1, ix) # (B, 1)
                 # append to the sequence
                 xgen = torch.cat((xgen, xcol), dim = 1)
+        # print the generated text
+        for i in range(num_return_sequences):
+            tokens = x[i, :max_length].tolist()
+
+
     model.train()
     optimizer.zero_grad()
     loss_accum = 0.0
