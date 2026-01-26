@@ -375,7 +375,8 @@ for step in range(max_steps):
         # print the generated text
         for i in range(num_return_sequences):
             tokens = x[i, :max_length].tolist()
-
+            decoded = enc.decode(tokens)
+            print(f"rank {ddp_rank} sample {i}: {decoded}")
 
     model.train()
     optimizer.zero_grad()
