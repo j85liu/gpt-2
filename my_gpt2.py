@@ -377,7 +377,8 @@ for step in range(max_steps):
             tokens = x[i, :max_length].tolist()
             decoded = enc.decode(tokens)
             print(f"rank {ddp_rank} sample {i}: {decoded}")
-
+            
+    # training loop
     model.train()
     optimizer.zero_grad()
     loss_accum = 0.0
