@@ -413,6 +413,9 @@ for step in range(max_steps):
     if master_process:
         print(f"step {step:4d} | loss: {loss_accum.item()} | lr {lr:.4e} | norm: {norm:.4f} | dt: {dt:.2f}ms")
     
+if ddp:
+    destroy_process_group()
+
 import sys; sys.exit(0)
 
 # prefix tokens
